@@ -3,11 +3,11 @@ import os
 import shutil
 
 
-# filepath = "A:\\var\\log\\" # Windows test
-filepath = "/var/log/" # Path to folder whose contents should be compressed
+# filepath = "A:\\var\\log\\"    # Windows test
+filepath = "/var/log/"  # Path to folder whose contents should be compressed
 
 
-for dirpath, dirnames, filenames in os.walk(filepath): # go trough contents of filepath
+for dirpath, dirnames, filenames in os.walk(filepath):  # go trough contents of filepath
     for filename in filenames:
         if filename.endswith(".gz"):   # Ignore files that are already compressed
             continue
@@ -20,14 +20,14 @@ for dirpath, dirnames, filenames in os.walk(filepath): # go trough contents of f
                     f_out.close()
                     os.unlink(dirpath + base + extension)
                     continue
-        else:  # file exists
+        else:   # file exists
             ii = 1
-            while True: # iterrate until unused name is found
-                new_name = os.path.join(filepath + base + " (" + str(ii)+ ")"+ extension + '.gz')
+            while True:     # iterrate until unused name is found
+                new_name = os.path.join(filepath + base + " (" + str(ii) + ")" + extension + '.gz')
                 if os.path.exists(new_name):
                     ii += 1
                     continue
-                with open(dirpath + base + extension, 'rb') as f_in: # compress file with unused name
+                with open(dirpath + base + extension, 'rb') as f_in:    # compress file with unused name
                     with gzip.open(new_name, 'wb') as f_out:
                         shutil.copyfileobj(f_in, f_out)
                         f_in.close()
