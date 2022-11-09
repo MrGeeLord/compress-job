@@ -3,8 +3,8 @@ import os
 import shutil
 
 
-filepath = "A:\\var\\log\\" # Windows test
-# filepath = "/var/log/" # Path to folder whose contents should be compressed
+# filepath = "A:\\var\\log\\" # Windows test
+filepath = "/var/log/" # Path to folder whose contents should be compressed
 
 
 for dirpath, dirnames, filenames in os.walk(filepath): # go trough contents of filepath
@@ -20,8 +20,6 @@ for dirpath, dirnames, filenames in os.walk(filepath): # go trough contents of f
                     f_out.close()
                     os.unlink(dirpath + base + extension)
                     continue
-
-
         else:  # file exists
             ii = 1
             while True: # iterrate until unused name is found
