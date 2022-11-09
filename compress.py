@@ -13,7 +13,7 @@ for dirpath, dirnames, filenames in os.walk(filepath): # go trough contents of f
             continue
         base, extension = os.path.splitext(filename)
         if not os.path.exists(filepath + base + extension + '.gz'):
-            with open(dirpath + base + extension, 'rb') as f_in:    # compress eligible files and
+            with open(dirpath + base + extension, 'rb') as f_in:    # compress eligible files
                 with gzip.open(filepath + base + extension + '.gz', 'wb') as f_out:
                     shutil.copyfileobj(f_in, f_out)
                     f_in.close()
